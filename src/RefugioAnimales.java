@@ -77,16 +77,96 @@ public class RefugioAnimales{
 }
 
 public static void registrarAnimal() {
+    System.out.print("Ingrese el nombre del animal: ");
+    String nombre = sc.nextLine().trim();
 
+    if (animales.contains(nombre)) {
+        System.out.println("Este animal ya está registrado.");
+        return;
+    }
+
+    if (especies.isEmpty()) {
+        System.out.println("No hay especies registradas. Registre una primero.");
+        return;
+    }
+
+    System.out.println("Especies disponibles: " + especies);
+    System.out.print("Ingrese la especie del animal: ");
+    String especie = sc.nextLine().trim();
+
+    if (!especies.contains(especie)) {
+        System.out.println("Especie no válida.");
+        return;
+    }
+
+    animales.add(nombre);
+    animalEspecie.put(nombre, especie);
+    estadoAnimal.put(nombre, estados[0]); // "Disponible" por defecto
+
+    System.out.println("Animal registrado exitosamente: " + nombre + " (" + especie + ")");
 }
 
 public static void registrarEspecie() {
 
 }
 
-    public static void marcarComoAdoptado() {
-        
+// ============================================================
+// 3. MARCAR ANIMAL COMO ADOPTADO (RINA)
+// ============================================================
+static void marcarAdoptado() {
+
+    // Filtra los animales que están disponibles
+    List<String> disponibles = animales.stream()
+            .filter(a -> estadoAnimal.get(a).equals("Disponible"))
+            .collect(Collectors.toList());
+
+    // Si no hay animales disponibles, se muestra mensaje y se termina
+    if (disponibles.isEmpty()) {
+        System.out.println("No hay animales disponibles para adopción.");
+        return;
+    }
+
+    // Muestra los animales disponibles con número
+    System.out.println("Animales disponibles:");
+
+    for (int i = 0; i < disponibles.size(); i++) {
+        System.out.println((i + 1) + ". " + disponibles.get(i));
     
+///Marcar animal como adoptado (Rina)//
+}
+
+    // Solicita selección del usuario
+    System.out.print("Seleccione un animal: ");
+
+    int opcion;
+
+    try {
+        // Convierte entrada a número
+        opcion = Integer.parseInt(sc.nextLine());
+
+        // Valida rango de selección
+        if (opcion < 1 || opcion > disponibles.size()) {
+            System.out.println("❌ Opción inválida.");
+            return;
+        }
+
+    } catch (Exception e) {
+        // ❌ Manejo de error si no es número
+        System.out.println("❌ Debe ingresar un número válido.");
+        return;
+    }
+
+    //Obtiene el animal seleccionado
+    String seleccionado = disponibles.get(opcion - 1);
+
+    //Cambia estado a "Adoptado"
+    estadoAnimal.put(seleccionado, "Adoptado");
+
+    //Confirmación
+    System.out.println("✔ El animal ha sido adoptado: " + seleccionado);
+}
+
+/================================================================//
     public static void mostrarAnimalesAdoptados() {
 
     }
