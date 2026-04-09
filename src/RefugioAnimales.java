@@ -1,54 +1,78 @@
-import java.util.Scanner;
+import java.util.*;
 
-public class RefugioAnimales {
+public class ChallengerRefugioAnimalesClaud {
+
+    // Scanner global para todo el programa
+    static Scanner sc = new Scanner(System.in);
+
+    // 1️⃣ Lista de animales
+    static List<String> animales = new ArrayList<>();
+
+    // 2️⃣ Estado del animal
+    static Map<String, String> estadoAnimal = new HashMap<>();
+
+    // 3️⃣ Set de especies
+    static Set<String> especies = new HashSet<>();
+
+    // 4️⃣ Relación animal → especie
+    static Map<String, String> animalEspecie = new HashMap<>();
+
+    // 5️⃣ Array de estados
+    static String[] estados = {"Disponible", "Adoptado"};
 
     public static void main(String[] args) {
 
         int opcion;
 
-        Scanner scanner = new Scanner(System.in);
-
         do {
-            System.out.println("===BIENVENIDO AL REFUGIO===");
-            System.out.println("1. Registrar Animal");
-            System.out.println("2. Registrar Especie");
-            System.out.println("3. Marcar Animal como Adoptado");
-            System.out.println("4. Mostrar Animales Disponibles");
-            System.out.println("5. Mostrar Animales Adoptados");
-            System.out.println("6. Mostrar Reporte General");
-            System.out.println("0. Salir");
+            mostrarMenu();
+            opcion = leerEntero("Seleccione una opción: ");
 
             switch (opcion) {
                 case 1 -> {
+                    registrarAnimal();
                 }
 
-                case 2 -> {
+                case 2 ->{
+                    registrarEspecie();
                 }
-
-                case 3 -> {
-
+                case 3 ->{
+                    adoptarAnimal();
                 }
-
-                case 4 ->{
-
+                case 4 -> {
+                    mostrarDisponibles();
                 }
-
-                case 5 ->{
-
+                case 5 -> {
+                    mostrarAdoptados();
                 }
-
-                case 6 ->{
-
+                case 6 -> {
+                    mostrarReporte();
                 }
-
                 case 7 -> {
-
+                    System.out.println("Saliendo del sistema...");
                 }
-                default ->
-                        System.out.println("Opcion no valida");
-
+                default -> {
+                    System.out.println(" Opción inválida");
+                }
             }
-        }while(true);
+
+        } while (opcion != 7);
+    }
+
+    // =========================
+    // MENÚ
+    // =========================
+    public static void mostrarMenu() {
+        System.out.println("\n=== REFUGIO DE ANIMALES ===");
+        System.out.println("1. Registrar animal");
+        System.out.println("2. Registrar especie");
+        System.out.println("3. Marcar animal como adoptado");
+        System.out.println("4. Mostrar animales disponibles");
+        System.out.println("5. Mostrar animales adoptados");
+        System.out.println("6. Mostrar reporte general");
+        System.out.println("7. Salir");
+    }
+
 
     }
 
