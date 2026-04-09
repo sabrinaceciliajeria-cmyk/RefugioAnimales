@@ -74,15 +74,15 @@ public class RefugioAnimales{
     }
 
 
-    }
+}
 
-    public static void registrarAnimal() {
+public static void registrarAnimal() {
 
-    }
+}
 
-    public static void registrarEspecie() {
+public static void registrarEspecie() {
 
-    }
+}
 
     public static void marcarComoAdoptado() {
         
@@ -92,12 +92,56 @@ public class RefugioAnimales{
     }
     public static void mostrarAnimalesDisponibles() {
 
+}
+
+public static void mostrarAnimalesAdoptados() {
+    int TotalDeAnimales = animales.size();
+
+    return;
+    System.out.println("");
+
+}
+
+public static void reporteGeneral() {
+
+    System.out.println("\n=== REPORTE GENERAL ===");
+
+    // 1. Verificar si hay animales registrados antes de hacer cálculos
+    if (animales.isEmpty()) {
+        System.out.println("Aún no hay animales registrados en el refugio.");
+        return;
     }
 
-    public static void mostrarAnimalesAdoptados() {
+    // 2. Calcular los totales usando
+    int totalAnimales = animales.size(); // Total de animales
 
+    int totalDisponibles = estadoAnimal.values().stream()
+            .filter(estado -> estado.equals(estados[0])) // Filtra por "Disponible"
+            .count(); // Cuenta los resultados
+
+    int totalAdoptados = estadoAnimal.values().stream()
+            .filter(estado -> estado.equals(estados[1])) // Filtra por "Adoptado"
+    // count(); // Cuenta los resultados
+
+    // 3. Mostrar la sección de totales
+    System.out.println("Total de animales: " + totalAnimales);
+    System.out.println("Total disponibles: " + totalDisponibles);
+    System.out.println("Total adoptados: " + totalAdoptados);
+
+    // 4. Mostrar el listado con formato de tabla
+    System.out.println("\nListado de animales:");
+    // Uso de printf para mantener las columnas alineadas a 15 caracteres
+    System.out.printf("%-15s | %-15s | %-15s%n", "Nombre", "Especie", "Estado");
+    System.out.println("==================================================");
+
+    // Iterar sobre la lista de animales para asegurar el orden de registro
+    for (String animal : animales) {
+        String especie = animalEspecie.get(animal);
+        String estado = estadoAnimal.get(animal);
+
+        // Imprimir cada fila respetando el mismo espaciado de la cabecera
+        System.out.printf("%-15s | %-15s | %-15s%n", animal, especie, estado);
     }
-
-    public static void reporteGeneral() {
+}
     }
 }
