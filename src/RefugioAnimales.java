@@ -106,8 +106,20 @@ public static void registrarAnimal() {
     System.out.println("Animal registrado exitosamente: " + nombre + " (" + especie + ")");
 }
 
-public static void registrarEspecie() {
+//PARTE 2 NATALIA REGISTRAR ESPECIE
+public static void registrarEspecie() { 
+System.out.print("Ingrese el nombre de la especie: ");
+String especie = scanner.nextLine().toLowerCase().trim();
 
+
+boolean agregado = especies.add(especie);
+
+if (agregado) {
+    System.out.println("Especie registrada correctamente.");
+} else {
+    System.out.println("La especie ya existe.");
+}
+    
 }
 
 // ============================================================
@@ -166,13 +178,27 @@ static void marcarAdoptado() {
     System.out.println("✔ El animal ha sido adoptado: " + seleccionado);
 }
 
-/================================================================//
-    public static void mostrarAnimalesAdoptados() {
+// =========================
+// OPCIÓN 4
+// =========================
+public static void mostrarDisponibles() {
 
+    System.out.println("\n--- Animales Disponibles ---"); // Título de la sección
+
+    boolean encontrado = false; // Indica si se encontró al menos un animal
+
+    for (String animal : animales) { // Recorre todos los animales
+        if (estadoAnimal.get(animal).equals("Disponible")) { // Verifica si está disponible
+            System.out.println("- " + animal + " (" + animalEspecie.get(animal) + ")"); // Muestra nombre y especie
+            encontrado = true; // Marca que sí hay resultados
+        }
     }
-    public static void mostrarAnimalesDisponibles() {
 
+    if (!encontrado) { // Si no se encontró ninguno
+        System.out.println("⚠️ No hay animales disponibles."); // Mensaje de aviso
+    }
 }
+
 
 public static void mostrarAnimalesAdoptados() {
     int TotalDeAnimales = animales.size();
@@ -223,5 +249,17 @@ public static void reporteGeneral() {
         System.out.printf("%-15s | %-15s | %-15s%n", animal, especie, estado);
     }
 }
-    }
+  public static int leerEntero(String mensaje) {
+        int numero;
+
+        while (true) {
+            System.out.print(mensaje);
+            try {
+                numero = Integer.parseInt(sc.nextLine());
+                return numero;
+            } catch (Exception e) {
+                System.out.println(" Debes ingresar un número válido.");
+            }
+        }
+    }   
 }
