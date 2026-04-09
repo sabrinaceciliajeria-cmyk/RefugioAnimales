@@ -77,7 +77,33 @@ public class RefugioAnimales{
 }
 
 public static void registrarAnimal() {
+    System.out.print("Ingrese el nombre del animal: ");
+    String nombre = sc.nextLine().trim();
 
+    if (animales.contains(nombre)) {
+        System.out.println("Este animal ya está registrado.");
+        return;
+    }
+
+    if (especies.isEmpty()) {
+        System.out.println("No hay especies registradas. Registre una primero.");
+        return;
+    }
+
+    System.out.println("Especies disponibles: " + especies);
+    System.out.print("Ingrese la especie del animal: ");
+    String especie = sc.nextLine().trim();
+
+    if (!especies.contains(especie)) {
+        System.out.println("Especie no válida.");
+        return;
+    }
+
+    animales.add(nombre);
+    animalEspecie.put(nombre, especie);
+    estadoAnimal.put(nombre, estados[0]); // "Disponible" por defecto
+
+    System.out.println("Animal registrado exitosamente: " + nombre + " (" + especie + ")");
 }
 
 public static void registrarEspecie() {
