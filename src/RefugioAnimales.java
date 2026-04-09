@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class ChallengerRefugioAnimalesClaud {
+public class RefugioAnimales{
 
     // Scanner global para todo el programa
     static Scanner sc = new Scanner(System.in);
