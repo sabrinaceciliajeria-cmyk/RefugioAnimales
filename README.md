@@ -2,12 +2,12 @@
 <div align="center">
 
 ```
-        ╔══════════════════════════════════════════════════════╗
-        ║                                                      ║
-        ║             🐾 REFUGIO DE ANIMALES 🐾               ║
-        ║            Sistema de Gestión en Consola             ║
-        ║                                                      ║
-        ╚══════════════════════════════════════════════════════╝
+           ╔══════════════════════════════════════════════════════╗
+           ║                                                      ║
+           ║             🐾 REFUGIO DE ANIMALES 🐾               ║
+           ║            Sistema de Gestión en Consola             ║
+           ║                                                      ║
+           ╚══════════════════════════════════════════════════════╝
 ```
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
