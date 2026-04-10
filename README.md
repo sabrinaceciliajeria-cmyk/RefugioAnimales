@@ -18,6 +18,10 @@
 
 </div>
 
+```
+Local (vacío) --force→ GitHub (sobreescribe todo)
+```
+
 ---
 
 ## 📖 Descripción del Proyecto
